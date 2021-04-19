@@ -13,10 +13,10 @@ fi
 
 timedatectl set-ntp true
 
-disk="/dev/$(lsblk -l | grep disk | head -n 1 | awk '{print $1}')"
-printf "\nSelect disk where you want to install Arch Linux [Default $disk]: "
+var="/dev/$(lsblk -l | grep disk | head -n 1 | awk '{print $1}')"
+printf "\nSelect disk where you want to install Arch Linux [Default $var]: "
 read disk
-disk=${disk:-"/dev/$(lsblk -l | grep disk | head -n 1 | awk '{print $1}')"}
+disk=${disk:-"$var"}
 echo "Using $disk"
 
 parted -s "$disk" -- mklabel gpt
