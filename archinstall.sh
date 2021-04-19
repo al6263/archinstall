@@ -40,9 +40,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 echo "END PART ONE"
 
-# Temporary
-curl https://paste.debian.net/plain/1194314/ > part2.sh
-
 echo "export efi_part=$efi_part" >> /mnt/root/.bashrc 
 cat part2.sh >> /mnt/root/.bashrc
 
