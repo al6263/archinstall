@@ -50,6 +50,6 @@ mount --rbind /run run/
 mount --rbind /sys/firmware/efi/efivars sys/firmware/efi/efivars/
 cp /etc/resolv.conf etc/resolv.conf
 
-install -Dm 766 part2.sh /mnt/root
+install -Dm 766 part2.sh /mnt/root/part2.sh
 
 efi_part=$efi_part chroot /mnt /bin/bash /root/part2.sh
