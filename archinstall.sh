@@ -41,6 +41,15 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "END PART ONE"
 
 echo "export efi_part=$efi_part" >> /mnt/root/.bashrc 
-cat part2.sh >> /mnt/root/.bashrc
 
-arch-chroot /mnt
+cd /mnt
+mount -t proc /proc proc/
+mount -t sysfs /sys sys/
+mount --rbind /dev dev/
+mount --rbind /run run/
+mount --rbind /sys/firmware/efi/efivars sys/firmware/efi/efivars/
+cp /etc/resolv.conf etc/resolv.conf
+
+install -Dm 766 part2.sh /mnt/root
+
+efi_part=$efi_part chroot /mnt /bin/bash /root/part2.sh

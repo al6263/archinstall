@@ -12,7 +12,7 @@ echo "$machine" >> /etc/hostname
 
 printf "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t$machine.localdomain\t$machine" >> /etc/hosts
 
-echo "\nNow choose your root password: "
+echo "\nNow choose your root password!"
 passwd
 
 pacman -S grub efibootmgr
