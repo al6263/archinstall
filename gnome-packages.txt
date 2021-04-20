@@ -1,3 +1,5 @@
+xorg
+gdm
 gnome-autoar
 gnome-backgrounds
 gnome-bluetooth
