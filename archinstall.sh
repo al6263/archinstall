@@ -1,5 +1,16 @@
 #!/bin/bash
 
+check() {
+	if [ $? != 0 ]
+	then
+		echo "Abort"
+		exit
+	fi
+}
+
+ls /sys/firmware/efi > /dev/null
+check
+
 echo "STARTING INSTALLATION SCRIPT"
 echo "We really dislike people who install arch command after command. That's why we thought of a script: to allow you not to think. Happy installation!"
 printf "Are you sure you want to continue with this script? [y/N] "
@@ -45,15 +56,21 @@ echo "export efi_part=$efi_part" >> /mnt/root/.bashrc
 # arch-chroot
 cd /mnt
 mount -t proc /proc proc/
+check
 mount -t sysfs /sys sys/
+check
 mount --rbind /dev dev/
+check
+
 mount --rbind /run run/
 mount --rbind /sys/firmware/efi/efivars sys/firmware/efi/efivars/
+check
 cp /etc/resolv.conf etc/resolv.conf
 
 install -Dm 766 ~/archinstall/part2.sh /mnt/root/part2.sh
 install -Dm 766 ~/archinstall/after_reboot.sh /mnt/root/after_reboot.sh
 install -Dm 766 ~/archinstall/.bashrc /mnt/root/.bashrc
+cp ~/archinstall/gnome-packages.txt /mnt/root
 
 # Calls the second script in chroot
 efi_part="$efi_part" chroot /mnt /bin/bash /root/part2.sh
