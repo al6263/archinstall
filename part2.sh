@@ -14,6 +14,8 @@ bold="\e[1m"
 uline="\e[4m"
 reset="\e[0m"
 
+alias pacman="pacman --noconfirm"
+
 ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
 hwclock --systohc
 locale-gen
