@@ -75,6 +75,10 @@ cp ~/archinstall/gnome-packages.txt /mnt/root
 # Calls the second script in chroot
 efi_part="$efi_part" chroot /mnt /bin/bash /root/part2.sh
 
+yellow="\e[0;33m"
+bold="\e[1m"
+reset="\e[0m"
+
 printf "[${bold}${yellow} ATTENTION ${reset}] LOG IN AS USER AFTER REBOOT! \n"
 echo "Reboot in 3 seconds"
 
