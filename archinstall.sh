@@ -52,7 +52,14 @@ mount --rbind /sys/firmware/efi/efivars sys/firmware/efi/efivars/
 cp /etc/resolv.conf etc/resolv.conf
 
 install -Dm 766 ~/archinstall/part2.sh /mnt/root/part2.sh
-install -Dm 766 ~/archinstall/part2.sh /mnt/root/after_reboot.sh
-install -Dm 766 ~/archinstall/part2.sh /mnt/root/.bashrc
+install -Dm 766 ~/archinstall/after_reboot.sh /mnt/root/after_reboot.sh
+install -Dm 766 ~/archinstall/.bashrc /mnt/root/.bashrc
 
+# Calls the second script in chroot
 efi_part="$efi_part" chroot /mnt /bin/bash /root/part2.sh
+
+printf "[${bold}${yellow} ATTENTION ${reset}] LOG IN AS USER AFTER REBOOT! \n"
+echo "Reboot in 3 seconds"
+
+sleep 3
+reboot

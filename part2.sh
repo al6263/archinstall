@@ -48,12 +48,8 @@ printf "${bold}${green}Input user password...${reset}\n"
 passwd "$username"
 
 pacman -S vim nano sudo
-echo 'wheel ALL=(ALL:ALL) ALL' | EDITOR='tee -a' visudo
+echo '%wheel ALL=(ALL) ALL' | EDITOR='tee -a' visudo
 
-cp /root/after_reboot.sh "/home/$username/.bashrc"
+mv /root/after_reboot.sh "/home/$username/.bashrc"
 
-printf "[${bold}${yellow} ATTENTION ${reset}] LOG IN AS USER AFTER REBOOT! \n"
-echo "Reboot in 3 seconds"
-
-sleep 3
-reboot
+exit
