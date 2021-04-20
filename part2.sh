@@ -54,6 +54,6 @@ echo '%wheel ALL=(ALL) ALL' | EDITOR='tee -a' visudo
 
 mv /root/after_reboot.sh "/home/$username/.bashrc"
 
-pacman -S --needed gnome gnome-tweaks nautilus-sendto gnome-nettool gnome-usage gnome multi-writer adwaita-icon-theme chrome-gnome-shell xdg-user-dirs-gtk fwupd arc-gtk-theme seahosrse gdm
+pacman -S gnome gnome-extra xorg gdm 
 
 exit
