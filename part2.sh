@@ -54,6 +54,6 @@ echo '%wheel ALL=(ALL) ALL' | EDITOR='tee -a' visudo
 
 mv /root/after_reboot.sh "/home/$username/.bashrc"
 
-pacman -S gnome gnome-extra xorg gdm 
+pacman -S xorg sddm plasma kde-applications
 
 exit
